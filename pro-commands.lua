@@ -85,6 +85,26 @@ addCMD("fakout", function(...)
     workspace.FallenPartsDestroyHeight = OrgDestroyHeight
 end)
 
+addCMD("spin", function(...)
+	local args = {...}
+	local spinSpeed = 10
+	if args[1] and isNumber(args[1]) then
+		spinSpeed = args[1]
+	end
+	local char = game.Players.LocalPlayer.Character or game.Players.LocalPlayer.CharacterAdded:Wait()
+	local root = char:WaitForChild("HumanoidRootPart")
+	for i,v in pairs(root:GetChildren()) do
+		if v.Name == "Spinning" then
+			v:Destroy()
+		end
+	end
+	local Spin = Instance.new("BodyAngularVelocity")
+	Spin.Name = "Spinning"
+	Spin.Parent = getRoot(speaker.Character)
+	Spin.MaxTorque = Vector3.new(0, math.huge, 0)
+	Spin.AngularVelocity = Vector3.new(0,spinSpeed,0)
+end)
+
 
 
 
@@ -121,4 +141,4 @@ else
 end
 
 
-print("\nhookmetamethod_hook's pro command script loaded :O :O pog :O\n\n[VERSION: 0.1 | BUILD: 11]\n")
+print("\nhookmetamethod_hook's pro command script loaded :O :O pog :O\n\n[VERSION: 0.2.12 | BUILD: 12]\n")
