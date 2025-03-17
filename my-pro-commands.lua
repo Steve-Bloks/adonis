@@ -74,6 +74,17 @@ addCMD("iy", function(...)
     loadstring(game:HttpGet('https://raw.githubusercontent.com/EdgeIY/infiniteyield/master/source'))()
 end)
 
+addCMD("fakout", function(...)
+	local char = game.Players.LocalPlayer.Character or game.Players.LocalPlayer.CharacterAdded:Wait()
+	local root = char:WaitForChild("HumanoidRootPart")
+    local oldpos = root.CFrame
+    workspace.FallenPartsDestroyHeight = 0/1/0
+    root.CFrame = CFrame.new(Vector3.new(0, OrgDestroyHeight - 25, 0))
+    wait(1)
+    root.CFrame = oldpos
+    workspace.FallenPartsDestroyHeight = OrgDestroyHeight
+end)
+
 
 
 
@@ -110,4 +121,4 @@ else
 end
 
 
-print("hookmetamethod_hook's pro command script loaded :O :O pog :O")
+print("hookmetamethod_hook's pro command script loaded :O :O pog :O\n[VERSION: 0.1 | BUILD: 11]")
