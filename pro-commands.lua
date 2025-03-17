@@ -103,7 +103,7 @@ end)
 
 if queue_on_teleport then
     Players.LocalPlayer.OnTeleport:Connect(function(State)
-        queue_on_teleport("")
+        queue_on_teleport("loadstring(game:HttpGet('https://raw.githubusercontent.com/Steve-Bloks/my-stuff/refs/heads/main/pro-commands.lua'))()")
     end)
 else
     warn("u can use script but ur trash executor doesnt support queue_on_teleport so u gotta re-exectute each time")
