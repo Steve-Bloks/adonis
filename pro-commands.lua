@@ -121,4 +121,4 @@ else
 end
 
 
-print("hookmetamethod_hook's pro command script loaded :O :O pog :O\n[VERSION: 0.1 | BUILD: 11]")
+print("\nhookmetamethod_hook's pro command script loaded :O :O pog :O\n\n[VERSION: 0.1 | BUILD: 11]\n")
