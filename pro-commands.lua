@@ -102,7 +102,7 @@ game.Players.LocalPlayer.Chatted:Connect(function(msg)
 end)
 
 if queue_on_teleport then
-    Players.LocalPlayer.OnTeleport:Connect(function(State)
+    game.Players.LocalPlayer.OnTeleport:Connect(function(State)
         queue_on_teleport("loadstring(game:HttpGet('https://raw.githubusercontent.com/Steve-Bloks/my-stuff/refs/heads/main/pro-commands.lua'))()")
     end)
 else
