@@ -85,25 +85,49 @@ addCMD("fakout", function(...)
     workspace.FallenPartsDestroyHeight = OrgDestroyHeight
 end)
 
-addCMD("spin", function(...)
-	local args = {...}
-	local spinSpeed = 10
-	if args[1] and isNumber(args[1]) then
-		spinSpeed = args[1]
-	end
-	local char = game.Players.LocalPlayer.Character or game.Players.LocalPlayer.CharacterAdded:Wait()
-	local root = char:WaitForChild("HumanoidRootPart")
-	for i,v in pairs(root:GetChildren()) do
-		if v.Name == "Spinning" then
-			v:Destroy()
-		end
-	end
-	local Spin = Instance.new("BodyAngularVelocity")
-	Spin.Name = "Spinning"
-	Spin.Parent = getRoot(speaker.Character)
-	Spin.MaxTorque = Vector3.new(0, math.huge, 0)
-	Spin.AngularVelocity = Vector3.new(0,spinSpeed,0)
+local spinning = false
+addCMD("spin", function(speed)
+    if not spinning then
+        spinning = true
+        speed = tonumber(speed) or 10
+
+        local speaker = game.Players.LocalPlayer
+        local char = speaker.Character or speaker.CharacterAdded:Wait()
+        local root = char:WaitForChild("HumanoidRootPart")
+
+        for _, v in pairs(root:GetChildren()) do
+            if v:IsA("BodyAngularVelocity") and v.Name == "Spinning" then
+                v:Destroy()
+            end
+        end
+
+        local spin = Instance.new("BodyAngularVelocity")
+        spin.Name = "Spinning"
+        spin.Parent = root
+        spin.MaxTorque = Vector3.new(0, math.huge, 0)
+        spin.AngularVelocity = Vector3.new(0, speed, 0)
+
+        print("Spin enabled with speed: ", speed)
+    else
+        local speaker = game.Players.LocalPlayer
+        local char = speaker.Character or speaker.CharacterAdded:Wait()
+        local root = char:WaitForChild("HumanoidRootPart")
+
+        for _, v in pairs(root:GetChildren()) do
+            if v:IsA("BodyAngularVelocity") and v.Name == "Spinning" then
+                v:Destroy()
+            end
+        end
+        spinning = false
+    end
 end)
+
+addCMD("thirdp", function(...)
+    game.Players.LocalPlayer.CameraMode = "Classic"
+end)
+
+
+
 
 
 
@@ -132,13 +156,13 @@ game.Players.LocalPlayer.Chatted:Connect(function(msg)
     end
 end)
 
-if queue_on_teleport then
+--[[if queue_on_teleport then
     game.Players.LocalPlayer.OnTeleport:Connect(function(State) 
         queue_on_teleport("loadstring(game:HttpGet('https://raw.githubusercontent.com/Steve-Bloks/my-stuff/refs/heads/main/pro-commands.lua'))()")
     end)
 else
     warn("u can use script but ur trash executor doesnt support queue_on_teleport so u gotta re-exectute each time")
-end
+end]]
 
 
-print("\nhookmetamethod_hook's pro command script loaded :O :O pog :O\n\n[VERSION: 0.2.12 | BUILD: 12]\n")
+print("\nhookmetamethod_hook's pro command script loaded :O :O pog :O\n\n[VERSION: 0.4.14 | BUILD: 15]\n")
