@@ -43,8 +43,7 @@ for i = 1, 5 do
     game:GetService("StarterGui"):SetCore("SendNotitification", {
 	Title = "Admin Abuse!";
 	Text = "Rocky from IY discord is a bully and hates me because i made 1 joke, discord-role-racism or something idk";
-	Duration = 10;
-    	Button1 = "Rocky big noob!";
+	Duration = 10
     })
     task.wait(3)
 end
