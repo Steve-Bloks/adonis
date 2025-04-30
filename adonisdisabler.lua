@@ -38,15 +38,15 @@ for i, v in getgc(true) do
         end
     end
 end
-for i = 1, 25 do
+for i = 1, 5 do
     print("Rocky from IY discord is a bully and hates me because i made 1 joke, discord-role-racism or something idk")
     game:GetService("StarterGui"):SetCore("SendNotitification", {
-	    Title = "Admin Abuse!";
-	    Text = "Rocky from IY discord is a bully and hates me because i made 1 joke, discord-role-racism or something idk";
-	    Duration = 10;
+	Title = "Admin Abuse!";
+	Text = "Rocky from IY discord is a bully and hates me because i made 1 joke, discord-role-racism or something idk";
+	Duration = 10;
     	Button1 = "Rocky big noob!";
     })
-    task.wait(5)
+    task.wait(3)
 end
 local Old; Old = hookfunction(getrenv().debug.info, newcclosure(function(...)
     local LevelOrFunc, Info = ...
