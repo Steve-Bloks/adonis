@@ -15,9 +15,7 @@ for i, v in getgc(true) do
             
             local Old; Old = hookfunction(Detected, function(Action, Info, NoCrash)
                 if Action ~= "_" then
-                    if true then
-                        warn(`Adonis AntiCheat flagged\nMethod: {Action}\nInfo: {Info}`)
-                    end
+                    warn(`Adonis AntiCheat flagged\nMethod: {Action}\nInfo: {Info}`)
                 end
                 
                 return true
@@ -29,9 +27,7 @@ for i, v in getgc(true) do
         if rawget(v, "Variables") and rawget(v, "Process") and typeof(KillFunc) == "function" and not Kill then
             Kill = KillFunc
             local Old; Old = hookfunction(Kill, function(Info)
-                if true then
-                    warn(`Adonis AntiCheat tried to kill (fallback): {Info}`)
-                end
+                warn(`Adonis AntiCheat tried to kill (fallback): {Info}`)
             end)
 
             table.insert(Hooked, Kill)
